@@ -1,0 +1,7 @@
+<% if @student.errors.any? %>
+    <ul class="form-group">
+        <% @student.errors.full_messages.each do |msg| %>
+            <li class="form-control alert alert-danger"><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
