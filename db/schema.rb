@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_090750) do
+ActiveRecord::Schema.define(version: 2019_03_09_094722) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_090750) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "time_zone"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
   end
 
 end

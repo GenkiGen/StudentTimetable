@@ -1,4 +1,11 @@
 <div class="card">
+    <% if @student.errors.any? %>
+        <ul class="list-group">
+            <% @student.errors.full_messages.each do |msg| %>
+                <li class="list-group-item alert alert-danger"><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
     <h1>Sign up for your account</h1>
     <%= form_for(@student, url: signup_path,html: { class: "form-group" }) do |f| %>
         <%= f.text_field :name, class: "form-control", placeholder: "*Name" %>

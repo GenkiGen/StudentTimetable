@@ -1,4 +1,7 @@
 class Student < ApplicationRecord
+    attr_accessor :activation_token, :activation_digest
+    before_create :create_activation_digest
+
     # Has a secure password
     has_secure_password
     # Validation
@@ -21,4 +24,19 @@ class Student < ApplicationRecord
     def remove_course(course)
         courses.delete(course)
     end
+
+    def Student.new_token
+        SecureRandom.urlsafe_base64.to_s
+    end
+
+    def Student.digest(string)
+        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+        BCrypt::Password.create(string, cost: cost)
+    end
+
+    private
+        def create_activation_digest
+            self.activation_token = Student.new_token
+            self.activation_digest = Student.digest(self.activation_token)
+        end
 end
