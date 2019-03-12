@@ -1,0 +1,17 @@
+<h1>View all available courses</h1>
+<div class="card-columns">
+    <% @courses.each do |course| %> 
+        <div class="card" style="width: 18rem">
+            <div class="card-body">
+                <h5 class="card-title"><%= course.code %></h5>
+                <p class="card-text">
+                    <%= course.name %>
+                </p>
+                <em class="card-text">By: <%= course.teacher.name %></em>
+                <% if is_learner? %>
+                    <%= link_to 'Follow', follow_course_path(course), class: 'btn btn-warning'%>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

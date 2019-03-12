@@ -1,0 +1,9 @@
+<div class="card p-3">
+    <h1>Create a course</h1>
+    <%= render 'courses/errors'%>
+    <%= form_for(@course, url: create_course_path, html: { class: 'form-group' }) do |f| %>
+        <%= f.text_field :name, class: 'form-control', placeholder: '*Course name' %>
+        <%= f.text_field :code, class: 'form-control', placeholder: '*Course code' %>
+        <%= f.submit 'Add course', class: 'btn btn-primary' %>
+    <% end %>
+<div>

@@ -10,8 +10,14 @@
       </li>
       <% if logged_in? %>
         <li class="nav-item">
-          <%= link_to 'Profile', student_path(current_student), class: 'nav-link' %>
+          <%= link_to 'Profile', user_path(current_user), class: 'nav-link' %>
         </li>
+        
+        <% if is_teacher? %>
+          <li class="nav-item">
+            <%= link_to 'Create course', create_course_path, class: 'nav-link' %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
   </div>

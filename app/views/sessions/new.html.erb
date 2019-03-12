@@ -1,6 +1,6 @@
 <div class="card p-3">
     <h1>Login</h1>
-    <%= form_for(:student, url: login_path, html: { class: 'form-group' } ) do |f| %>
+    <%= form_for(:user, url: login_path, html: { class: 'form-group' } ) do |f| %>
         <%= f.email_field :email, class: 'form-control', placeholder: '*Email'%>
         <%= f.password_field :password, class: 'form-control', placeholder: '*Password'%>
         <%= f.label :remember_me %>

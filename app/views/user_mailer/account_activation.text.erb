@@ -1,0 +1,4 @@
+Hello, <%= @user.name %>
+
+Please check your account activation link below
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

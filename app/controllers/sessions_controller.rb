@@ -3,12 +3,13 @@ class SessionsController < ApplicationController
     end
 
     def create
-        # Get student
-        student = Student.find_by(email: params[:student][:email])
-        if student && student.authenticate(params[:student][:password])
-            login student
+        # Get user
+        user = User.find_by(email: params[:user][:email])
+        if user && user.authenticate(params[:user][:password])
+            login user
+            params[:user][:remember_me] == '1' ? remember(user) : forget(user)
             flash[:success] = 'You have logged in'
-            redirect_to student
+            redirect_to user_path(user)
         else
             flash[:danger] = 'Invalid email/password combination'
             render 'new'

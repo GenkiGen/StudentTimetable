@@ -1,6 +1,6 @@
-<% if @user.errors.any? %>
+<% if @teacher.errors.any? %>
     <ul class="form-group">
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @teacher.errors.full_messages.each do |msg| %>
             <li class="form-control alert alert-danger"><%= msg %></li>
         <% end %>
     </ul>

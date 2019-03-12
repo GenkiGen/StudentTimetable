@@ -1,0 +1,15 @@
+<div class="card">
+    <h1>Sign up for teacher your account</h1>
+    <%= render 'teachers/errors' %>
+    <%= form_for(@teacher, url: teacher_signup_path,html: { class: "form-group" }) do |f| %>
+        <%= f.text_field :name, class: "form-control", placeholder: "*Name" %>
+        <%= f.email_field :email, class: "form-control", placeholder: "*Email" %>
+        <%= f.password_field :password, class: "form-group", placeholder: "*Password" %>
+        <%= f.password_field :password_confirmation, class: "form-group", placeholder: "*Reenter your password" %>
+        <%= f.label :time_zone, 'Select your timezone' %>
+        <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.all, class: 'form-control' %>
+        <%= f.label :admin, 'Are you an admin ?' %>
+        <%= f.check_box :admin%>
+        <%= f.submit "Sign up", class: "btn btn-success" %>
+    <% end %>
+</div>

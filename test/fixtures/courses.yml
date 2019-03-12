@@ -3,7 +3,9 @@
 one:
   name: MyString
   code: MyString
+  teacher_id: 1
 
 two:
   name: MyString
   code: MyString
+  teacher_id: 1
