@@ -10,13 +10,20 @@ Rails.application.routes.draw do
   # Login path
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create', as: nil
+  delete '/logout', to: 'sessions#delete', as: :logout
   # Confirmation path
   resources :account_activation, only: [:edit]
   # User path
   get '/users/:id', to: 'users#show', as: :user
+  # Learner path
+  get '/learners/:id', to: 'learners#show', as: :learner
+  # Teacher path
+  get '/teachers/:id', to: 'teachers#show', as: :teacher
   # Courses path
   get '/courses/create', to: 'courses#new', as: :create_course
   post '/courses/create', to: 'courses#create', as: nil
   get '/courses', to: 'courses#index', as: :courses
-  post '/courses/:id/follow', to: 'courses#follow', as: :follow_course
+  patch '/courses/:id/follow', to: 'courses#follow', as: :follow_course
+  delete '/courses/:id/follow', to: 'courses#unfollow', as: nil
+  delete '/courses/:id', to: 'courses#delete', as: :course
 end

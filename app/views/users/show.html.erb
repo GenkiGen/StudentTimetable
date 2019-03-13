@@ -1,6 +1,38 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-2">
         <h1><%= @user.name %></h1>
         <p>Created at: <%= @user.created_at %></p>
+    </div>
+    <div class="col-md-8">
+        <% if is_learner? %>
+            <h1>Here is the course you follow</h1>
+            <div class="card-columns">
+                <% current_user.following_courses.each do |course|%>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= course.code %></h5>
+                            <p class="card-text">
+                                <%= course.name %>
+                            </p>
+                            <em class="card-text">By: <%= course.teacher.name %></em>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% elsif is_teacher? %>
+            <h1>Here is the course you created</h1>
+            <div class="card-columns">
+                <% current_user.courses.each do |course|%>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= course.code %></h5>
+                            <p class="card-text">
+                                <%= course.name %>
+                            </p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

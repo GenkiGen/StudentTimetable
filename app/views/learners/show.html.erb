@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-2">
+        <h1><%= @learner.name %></h1>
+        <p>Created at: <%= @learner.created_at %></p>
+    </div>
+    <div class="col-md-8">
+        <h1>Here is the course <%= is_current_user?(@learner) ? 'you' : @learner.name %> follow</h1>
+        <div class="card-columns">
+            <% @learner.following_courses.each do |course|%>
+                <div class="card">
+                    <div class="card-body">
+                        <%= image_tag(course.picture.url, class: 'card-img-top')if course.picture? %>
+                        <h5 class="card-title"><%= course.code %></h5>
+                        <p class="card-text">
+                            <%= course.name %>
+                        </p>
+                        <em class="card-text" style="display: block;">By: <%= course.teacher.name %>, <%= pluralize(course.following_learners.count, 'learner') %> </em>
+                        <% if logged_in? && is_current_user?(@learner) %>
+                            <%= link_to 'Unfollow', follow_course_path(course), method: :delete, class: 'btn btn-danger' %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

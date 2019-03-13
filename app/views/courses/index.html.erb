@@ -1,17 +1,38 @@
 <h1>View all available courses</h1>
+<%= label_tag 'sort', 'Sort by'%>
+<%= select_tag 'sort', options_for_select([:date, :popularity]) %>
 <div class="card-columns">
     <% @courses.each do |course| %> 
         <div class="card" style="width: 18rem">
             <div class="card-body">
+                <%= image_tag(course.picture.url, class: 'card-img-top')if course.picture? %>
                 <h5 class="card-title"><%= course.code %></h5>
                 <p class="card-text">
                     <%= course.name %>
                 </p>
-                <em class="card-text">By: <%= course.teacher.name %></em>
-                <% if is_learner? %>
-                    <%= link_to 'Follow', follow_course_path(course), class: 'btn btn-warning'%>
+                <em class="card-text" style="display: block;">By: <%= course.teacher.name %>, <%= pluralize(course.following_learners.count, 'learner') %></em>
+                <% if is_learner? && !followed_course(course) %>
+                    <%= link_to 'Follow', follow_course_path(course), method: :patch, class: 'btn btn-warning' %>
                 <% end %>
             </div>
         </div>
     <% end %>
 </div>
+
+<script type="text/javascript">
+    document.querySelector('#sort').onchange = (event) => {
+        console.log('hello')
+        //Get value
+        let val = event.target.value
+        switch (val) {
+            case 'date':
+                window.location.replace("<%= courses_path(sort: 'date') %>")
+                break;
+            case 'popularity':
+                window.location.replace("<%= courses_path(sort: 'popularity') %>")
+                break;
+            default:
+                break;
+        }
+    }
+</script>

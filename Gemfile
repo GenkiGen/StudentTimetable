@@ -7,6 +7,9 @@ ruby '2.6.1'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~>1.3.6'
+# Use carrier-wave for image upload
+gem 'carrierwave'
+gem 'mini_magick'
 # Use bcrypt for encryption
 gem 'bcrypt'
 # Use bootstrap for styling
@@ -65,3 +68,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Production
+group :production do
+  gem 'fog'
+end

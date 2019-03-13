@@ -3,11 +3,22 @@ module SessionsHelper
         session[:user_id] = user.id
     end
 
-    def is_teacher?
+    def logout
+        @current_user = nil
+        session.delete(:user_id)
+    end
+
+    def is_current_user?(user)
+        current_user == user
+    end
+
+    def is_teacher?(user = nil)
+        user ||= current_user
         current_user.type == 'Teacher'
     end
 
-    def is_learner?
+    def is_learner?(user = nil)
+        user ||= current_user
         current_user.type == "Learner"
     end
 
@@ -36,5 +47,19 @@ module SessionsHelper
         cookies.delete(:user_id)
         user.forget
         cookies.delete(:login_token)
+    end
+
+    def followed_course(course)
+        !current_user.following_courses.find_by(id: course.id)
+                                      .nil?
+    end
+
+    def remember_location
+        session[:url] = request.original_url if request.get?
+    end
+
+    def redirect_or(default)
+        redirect_to(session[:url] ? session[:url] : default)
+        session.delete(:url)
     end
 end

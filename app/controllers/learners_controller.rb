@@ -14,6 +14,10 @@ class LearnersController < ApplicationController
         end
     end
 
+    def show
+        @learner = Learner.find_by(id: params[:id])
+    end
+
     private 
         def learner_params
             params.require(:learner).permit(:name, :email, :password,

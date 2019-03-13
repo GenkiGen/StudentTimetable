@@ -1,5 +1,6 @@
 class Learner < User
-    has_many :following_courses, class_name: 'Course', source: :Course
+    has_many :learner_course_relationships
+    has_many :following_courses, -> {distinct},through: :learner_course_relationships, class_name: 'Course', source: :course
     has_many :teachers, through: :following_courses
 
     def follow_course(course)
@@ -7,6 +8,6 @@ class Learner < User
     end
 
     def unfollow_course(course)
-        follow_course.delete(course)
+        following_courses.delete(course)
     end
 end

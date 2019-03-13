@@ -9,10 +9,22 @@ class SessionsController < ApplicationController
             login user
             params[:user][:remember_me] == '1' ? remember(user) : forget(user)
             flash[:success] = 'You have logged in'
-            redirect_to user_path(user)
+            if is_teacher?(user)
+                redirect_to teacher_path(user)
+            elsif is_learner?(user)
+                redirect_to learner_path(user)
+            end
         else
             flash[:danger] = 'Invalid email/password combination'
             render 'new'
         end
+    end
+
+    def delete
+        if logged_in?
+            forget(current_user)
+            logout
+        end
+        redirect_to root_path
     end
 end
