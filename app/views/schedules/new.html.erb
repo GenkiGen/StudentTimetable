@@ -1,0 +1,11 @@
+<h1>Add schedule for "<%= @course.name %>"</h1>
+<%= render 'schedules/errors' %>
+<%= form_for(:schedule, url: create_schedule_path, html: { class: 'form-group' })do |f| %>
+    <%= f.label :start_time %>
+    <%= f.time_field :start_time, class: 'form-control', required: true %>
+
+    <%= f.label :end_time %>
+    <%= f.time_field :end_time, class: 'form-control', required: true %>
+
+    <%= f.submit 'Make schedule', class: 'btn btn-warning' %>
+<% end %>

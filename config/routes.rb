@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   get '/courses/create', to: 'courses#new', as: :create_course
   post '/courses/create', to: 'courses#create', as: nil
   get '/courses', to: 'courses#index', as: :courses
+  get '/courses/:id', to: 'courses#show', as: :nil
   patch '/courses/:id/follow', to: 'courses#follow', as: :follow_course
   delete '/courses/:id/follow', to: 'courses#unfollow', as: nil
   delete '/courses/:id', to: 'courses#delete', as: :course
+  # Schedule path
+  get '/courses/:id/schedules/create', to: 'schedules#new', as: :create_schedule
+  post '/courses/:id/schedules/create', to: 'schedules#create', as: nil
 end

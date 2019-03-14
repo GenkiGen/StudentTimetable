@@ -5,6 +5,8 @@ class Course < ApplicationRecord
     # Relationship with users
     has_many :learner_course_relationships
     has_many :following_learners, -> { distinct },through: :learner_course_relationships, class_name: 'Learner', source: :learner
+    # Relationhip with schedules
+    has_many :schedules
     # Uploader
     mount_uploader :picture, ::PictureUploader
     validate :avatar_size
