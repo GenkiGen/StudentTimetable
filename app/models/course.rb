@@ -11,6 +11,11 @@ class Course < ApplicationRecord
     mount_uploader :picture, ::PictureUploader
     validate :avatar_size
 
+    # Search
+    def self.search(course_name)
+        Course.where('name LIKE ?', "%#{course_name}%")
+    end
+
     private 
         def avatar_size
             unless picture.size < 5.megabytes 

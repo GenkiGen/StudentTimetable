@@ -1,0 +1,15 @@
+<h1>Results: <%= pluralize(@courses.all.count, 'course') %></h1>
+<% if @courses.any? %>
+    <div class="card-columns">
+        <% @courses.each do |course| %>
+            <div class="card">
+                <%= image_tag course.picture.url, class: 'card-img-top', alt: 'Course Image' if course.picture? %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= link_to course.name, course_path(course) %></h5>
+                    <p class="card-text">By: <%= link_to course.teacher.name, teacher_path(course.teacher) %></p>
+                    <p class="card-text">Has <%= pluralize(course.following_learners.count, 'learner') %></p>
+                </div>
+            </div>
+        <% end %>
+    </ul>
+<% end %>

@@ -7,28 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Create 50 students
-Learner.create(id: 1, name: 'John Cena', email: 'john@email.com', password: 'Rm!t201278', password_digest: 'Rm!t201278', activated: true, activated_at: Time.zone.now, time_zone: 'Hanoi')
+Learner.create(id: 1, name: 'John Cena', email: 'john@email.com', password: 'Rm!t201278', password_confirmation: 'Rm!t201278', activated: true, activated_at: Time.zone.now, time_zone: 'Hanoi')
 50.times do |n|
     name = Faker::Name.name
     email = Faker::Internet.email
     password = 'Rm!t201278'
     time_zone = 'Hanoi'
     
-    Learner.create(id: n+2, name: name, email: email, password: password,
-        activated: true, activated_at: Time.zone.now, time_zone: time_zone)
+    Learner.create(id: n+2, name: name, email: email, password: password, password_confirmation: password, activated: true, 
+        activated_at: Time.zone.now, time_zone: time_zone)
 end
 
 # Create 30 teachers
-Teacher.create(id: 53, name: 'Johny Legond', email: 'legond@email.com', password: 'Rm!t201278', password_digest: 'Rm!t201278', activated: true,
-    activated_at: Time.zone.now, time_zone: 'Hanoi')
+Teacher.create(id: 53, name: 'Johny Legond', email: 'legond@email.com', password: 'Rm!t201278', password_confirmation: 'Rm!t201278', activated: true, activated_at: Time.zone.now, time_zone: 'Hanoi')
 30.times do |n|
     name = Faker::Name.name
     email = Faker::Internet.email
     password = 'Rm!t201278'
     time_zone = 'Hanoi'
 
-    Teacher.create(id: n+54, name: name, email: email, password: password,
-        activated: true, activated_at: Time.zone.now, time_zone: time_zone)
+    Teacher.create(id: n+54, name: name, email: email, password: password, password_confirmation: password, activated: true, activated_at: Time.zone.now, time_zone: time_zone)
 end
 
 # Create courses that belongs to those 30 teachers

@@ -12,6 +12,14 @@ class CoursesController < ApplicationController
         @course = Course.find_by(id: params[:id])
     end
 
+    def search
+        @courses = Course.search(params[:q])
+        respond_to do |format|
+            format.html
+            format.json { render json: @courses }
+        end
+    end
+
     def create
         @course = Course.new(course_params)
         if current_user.add_course(@course)
