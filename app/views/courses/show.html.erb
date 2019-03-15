@@ -9,6 +9,7 @@
 <ul class="list-group">
     <% @course.schedules.order(:start_time).each do |sch| %>
         <li class="list-group-item">
+            <h3>On <%= sch.day %></h3>
             <p>Start at: <%= format_time(sch.start_time) %></p>
             <p>End at: <%= format_time(sch.end_time) %></p>
         </li>

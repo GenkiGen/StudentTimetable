@@ -1,6 +1,6 @@
 <!--Search Bar-->
 <% content_for :search_bar do %>
-    <form class="form-inline my-2 my-lg-0">
+    <%= form_for(:q, url: search_course_path, html: { class: 'form-inline my-2 my-lg-0' }, method: :get) do %>
         <div class="search-section">
             <input class="form-control mr-sm-2" type="search" placeholder="Search Courses" aria-label="Search">
             <div class="search-area">
@@ -9,7 +9,7 @@
             </div>
         </div>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <% end %>
 <% end %>
 
 <h1>View all available courses</h1>

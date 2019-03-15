@@ -1,6 +1,7 @@
 class Schedule < ApplicationRecord
     belongs_to :course
     validate :start_time_must_before_end_time
+    validates :day, inclusion: { in: Date::DAYNAMES }
     validate :has_not_overlapped
 
     def Schedule.parse(time_string)
@@ -20,12 +21,12 @@ class Schedule < ApplicationRecord
 
         def has_not_overlapped
             schedule_before = course.schedules
-                                    .where('start_time <= ?', start_time)
+                                    .where('day = ? AND start_time <= ?', day, start_time)
                                     .order(:start_time)
                                     .last
             
             schedule_after = course.schedules
-                                   .where('start_time > ?', start_time)
+                                   .where('day = ? AND start_time > ?', day, start_time)
                                    .order(:start_time)
                                    .first
             

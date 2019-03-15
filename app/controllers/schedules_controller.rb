@@ -46,7 +46,7 @@ class SchedulesController < ApplicationController
         end
 
         def schedule_params
-            all_params = params.require(:schedule).permit(:start_time, :end_time)
+            all_params = params.require(:schedule).permit(:start_time, :end_time, :day)
             all_params[:start_time] = Schedule.parse(all_params[:start_time])
             all_params[:end_time] = Schedule.parse(all_params[:end_time])
             all_params
