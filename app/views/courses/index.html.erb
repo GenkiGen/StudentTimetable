@@ -1,6 +1,7 @@
 <h1>View all available courses</h1>
 <%= label_tag 'sort', 'Sort by'%>
 <%= select_tag 'sort', options_for_select([:date, :popularity]) %>
+<%= will_paginate @courses %>
 <div class="card-columns">
     <% @courses.each do |course| %> 
         <div class="card" style="width: 18rem">
@@ -11,6 +12,7 @@
                     <%= course.name %>
                 </p>
                 <em class="card-text" style="display: block;">By: <%= course.teacher.name %>, <%= pluralize(course.following_learners.count, 'learner') %></em>
+                <%= link_to 'View', course_path(course), class: 'btn btn-success' %>
                 <% if is_learner? && !followed_course(course) %>
                     <%= link_to 'Follow', follow_course_path(course), method: :patch, class: 'btn btn-warning' %>
                 <% end %>

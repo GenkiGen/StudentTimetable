@@ -2,6 +2,10 @@ class LearnersController < ApplicationController
     def new
         @learner = Learner.new
     end
+    
+    def index
+        @learners = Learner.paginate(page: params[:page])
+    end
 
     def create
         @learner = Learner.create(learner_params)
@@ -16,6 +20,7 @@ class LearnersController < ApplicationController
 
     def show
         @learner = Learner.find_by(id: params[:id])
+        @following_courses = @learner.following_courses.paginate(page: params[:page], per_page: 10)
     end
 
     private 

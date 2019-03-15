@@ -30,7 +30,7 @@ class CoursesController < ApplicationController
     end
 
     def index
-        @courses = get_course_and_sort(params[:sort])
+        @courses = get_course_and_sort(params[:sort]).paginate(page: params[:page])
     end
 
     def follow

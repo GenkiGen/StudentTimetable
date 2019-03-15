@@ -12,6 +12,11 @@ gem 'carrierwave'
 gem 'mini_magick'
 # Use bcrypt for encryption
 gem 'bcrypt'
+# Use faker to generate fake data
+gem 'faker'
+# Use will_paginate for pagination
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # Use bootstrap for styling
 gem 'bootstrap'
 gem 'jquery-rails'

@@ -5,8 +5,9 @@
     </div>
     <div class="col-md-8">
         <h1>Here is the course <%= is_current_user?(@learner) ? 'you' : @learner.name %> follow</h1>
+        <%= will_paginate @following_courses %>
         <div class="card-columns">
-            <% @learner.following_courses.each do |course|%>
+            <% @following_courses.each do |course|%>
                 <div class="card">
                     <div class="card-body">
                         <%= image_tag(course.picture.url, class: 'card-img-top')if course.picture? %>
@@ -15,6 +16,7 @@
                             <%= course.name %>
                         </p>
                         <em class="card-text" style="display: block;">By: <%= course.teacher.name %>, <%= pluralize(course.following_learners.count, 'learner') %> </em>
+                        <%= link_to 'View', course_path(course), class: 'btn btn-success'%>
                         <% if logged_in? && is_current_user?(@learner) %>
                             <%= link_to 'Unfollow', follow_course_path(course), method: :delete, class: 'btn btn-danger' %>
                         <% end %>

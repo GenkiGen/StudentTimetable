@@ -1,0 +1,4 @@
+michael:
+  name: John Cena
+  email: ryanz201278yahoo.com.vn
+  password_digest: <%= User.digest('password') %>

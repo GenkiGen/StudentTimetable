@@ -1,0 +1,10 @@
+<h1>View all teachers</h1>
+<%= will_paginate %>
+<ul class="list-group">
+    <% @teachers.each do |teacher| %>
+        <li class="list-group-item">
+            <h3><%= link_to teacher.name, teacher_path(teacher) %></h3>
+            <p>Courses created: <%= teacher.courses.all.count %></p>
+        </li>   
+    <% end %>
+</ul>

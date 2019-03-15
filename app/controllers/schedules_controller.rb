@@ -13,7 +13,7 @@ class SchedulesController < ApplicationController
         @schedule = @course.schedules.new(schedule_params)
         if @schedule.save
             flash[:success] = 'Added a schedule to your courses'
-            redirect_to root_path
+            redirect_to course_path(@course)
         else
             render 'new'
         end

@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_100801) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.integer "course_id"
-    t.time "start_at"
-    t.time "end_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"

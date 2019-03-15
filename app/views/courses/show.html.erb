@@ -1,8 +1,13 @@
 <h1>Course: <%= @course.name %></h1>
 <h5>By: <%= @course.teacher.name %></h5>
-<p>Course Schedules</p>
+<div>
+    <h2 style="display: inline-block;">Course Schedules</h2>
+    <% if logged_in? && is_teacher? && is_owner?(@course) %>
+        <%= link_to '+', create_schedule_path(@course), class: 'btn btn-warning' %>
+    <% end %>
+</div>
 <ul class="list-group">
-    <% @course.schedules.each do |sch| %>
+    <% @course.schedules.order(:start_time).each do |sch| %>
         <li class="list-group-item">
             <p>Start at: <%= format_time(sch.start_time) %></p>
             <p>End at: <%= format_time(sch.end_time) %></p>

@@ -1,0 +1,10 @@
+<h1>View all students</h1>
+<%= will_paginate @learners %>
+<ul class="list-group">
+    <% @learners.each do |learner| %>
+        <li class="list-group-item">
+            <h3><%= link_to learner.name, learner_path(learner)%></h3>
+            <p>followed: <%= pluralize(learner.following_courses.count, 'course') %></p>
+        </li>
+    <% end %>
+</ul>

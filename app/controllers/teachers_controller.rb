@@ -1,8 +1,12 @@
 class TeachersController < ApplicationController
-    before_action :logged_in, only: [:show]
+    before_action :logged_in, only: [:show, :index]
 
     def new
         @teacher = Teacher.new
+    end
+
+    def index
+        @teachers = Teacher.paginate(page: params[:page])
     end
 
     def create
@@ -18,6 +22,7 @@ class TeachersController < ApplicationController
 
     def show
         @teacher = Teacher.find_by(id: params[:id])
+        @courses = @teacher.courses.all.paginate(page: params[:page], per_page: 20)
     end
 
     private

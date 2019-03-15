@@ -12,6 +12,11 @@ module SessionsHelper
         current_user == user
     end
 
+    def is_owner?(course)
+        target = current_user.courses.find(course.id)
+        !target.nil?
+    end
+
     def is_teacher?(user = nil)
         user ||= current_user
         current_user.type == 'Teacher'
