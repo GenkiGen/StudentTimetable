@@ -23,6 +23,17 @@ class LearnersController < ApplicationController
         @following_courses = @learner.following_courses.paginate(page: params[:page], per_page: 10)
     end
 
+    def timetable
+        @learner = Learner.find_by(id: params[:id])
+        @monday = @learner.schedules.where('day = ?', 'Monday')
+        @tuesday = @learner.schedules.where('day = ?', 'Tuesday')
+        @wednesday = @learner.schedules.where('day = ?', 'Wednesday')
+        @thursday = @learner.schedules.where('day = ?', 'Thursday')
+        @friday = @learner.schedules.where('day = ?', 'Friday')
+        @saturday = @learner.schedules.where('day = ?', 'Saturday')
+        @sunday = @learner.schedules.where('day = ?', 'Sunday')
+    end
+
     private 
         def learner_params
             params.require(:learner).permit(:name, :email, :password,

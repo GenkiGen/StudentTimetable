@@ -1,0 +1,106 @@
+<div class="table">
+   <div class="table-mon">
+       <p>Monday</p>
+       <div class="block-holder">
+           <% unless @monday.nil? %>
+               <% @monday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-tue">
+       <p>Tuesday</p>
+       <div class="block-holder">
+           <% unless @tuesday.nil? %>
+               <% @tuesday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-wed">
+       <p>Wednesday</p>
+       <div class="block-holder">
+           <% unless @wednesday.nil? %>
+               <% @wednesday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-thu">
+       <p>Thursday</p>
+       <div class="block-holder">
+           <% unless @thursday.nil? %>
+               <% @thursday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-fri">
+       <p>Friday</p>
+       <div class="block-holder">
+           <% unless @friday.nil? %>
+               <% @friday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-sat">
+       <p>Saturday</p>
+       <div class="block-holder">
+           <% unless @saturday.nil? %>
+               <% @saturday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+
+   <div class="table-sun">
+       <p>Sunday</p>
+       <div class="block-holder">
+           <% unless @sunday.nil? %>
+               <% @sunday.each do |schedule| %>
+                   <div class="block" style = "height: <%= calculate_height(schedule) %>; top: <%= calculate_position(schedule) %>">
+                       <p><%= schedule.course.code %></p>
+                       <p><%= format_time(schedule.start_time) %>
+                       - <%= format_time(schedule.end_time) %></p>
+                   </div>
+               <% end %>
+           <% end %>
+       </div>
+   </div>
+</div>

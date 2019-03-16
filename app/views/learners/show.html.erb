@@ -2,6 +2,7 @@
     <div class="col-md-2">
         <h1><%= @learner.name %></h1>
         <p>Created at: <%= @learner.created_at %></p>
+        <%= link_to 'Timetable', learner_timetable_path(@learner), class: 'btn btn-warning' %>
     </div>
     <div class="col-md-8">
         <h1>Here is the course <%= is_current_user?(@learner) ? 'you' : @learner.name %> follow</h1>

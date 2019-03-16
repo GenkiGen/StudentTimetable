@@ -14,6 +14,9 @@
  @import 'bootstrap';
 
 /* Universial */
+body {
+    font-size: 17px;
+}
 *, input {
     padding: 5px;
     margin: 5px;
@@ -56,3 +59,32 @@
         }
     }
 }
+
+/* Time table styling */
+.table {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1rem;
+ 
+    div[class^='table-'] {
+        flex: 1;
+        text-align: center;
+        .block-holder {
+            position: relative;
+            .block {
+                padding: 0;
+                width: 100%;
+                position: absolute;
+                border: 1px solid black;
+                font-size: 0.75rem;
+                background: #777;
+
+                p {
+                    padding-top: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+ }
+ 

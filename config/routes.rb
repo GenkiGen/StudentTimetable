@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # User path
   get '/users/:id', to: 'users#show', as: :user
   # Learner path
+  get '/learners/:id/timetable', to: 'learners#timetable', as: :learner_timetable
   get '/learners/:id', to: 'learners#show', as: :learner
   get '/learners', to: 'learners#index', as: :learners
   # Teacher path
