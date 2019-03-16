@@ -44,8 +44,13 @@ class CoursesController < ApplicationController
     def follow
         @course = Course.find_by(id: params[:id])
         unless followed_course(@course)
-            current_user.follow_course(@course)
-            flash[:success] = 'You have followed this course'
+            # Check for collision
+            unless current_user.has_overlapped_courses(@course)
+                current_user.follow_course(@course)
+                flash[:success] = 'You have followed this course'
+            else
+                flash[:danger] = 'Courses collided'
+            end
         else
             flash[:danger] = 'You have already follow this course'
         end

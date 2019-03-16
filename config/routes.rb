@@ -34,4 +34,5 @@ Rails.application.routes.draw do
   # Schedule path
   get '/courses/:id/schedules/create', to: 'schedules#new', as: :create_schedule
   post '/courses/:id/schedules/create', to: 'schedules#create', as: nil
+  delete '/courses/:id/schedules/:sch_id', to: 'schedules#delete', as: :delete_schedule
 end

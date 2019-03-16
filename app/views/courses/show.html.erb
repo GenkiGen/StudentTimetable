@@ -12,6 +12,7 @@
             <h3>On <%= sch.day %></h3>
             <p>Start at: <%= format_time(sch.start_time) %></p>
             <p>End at: <%= format_time(sch.end_time) %></p>
+            <%= link_to 'Delete', delete_schedule_path(id: @course.id, sch_id: sch.id), class: 'btn btn-danger', method: :delete if logged_in? && is_teacher? && is_owner?(@course) %>
         </li>
     <% end %>
 </ul>

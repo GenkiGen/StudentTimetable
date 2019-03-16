@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
-    before_action :logged_in, only: [:new]
-    before_action :teacher_logged_in, only: [:new]
-    before_action :owner_logged_in, only: [:new]
+    before_action :logged_in, only: [:new, :create, :delete]
+    before_action :teacher_logged_in, only: [:new, :create, :delete]
+    before_action :owner_logged_in, only: [:new, :create, :delete]
 
     def new
         @course ||= Course.find_by(id: params[:id])
@@ -11,12 +11,20 @@ class SchedulesController < ApplicationController
     def create
         @course ||= Course.find_by(id: params[:id])
         @schedule = @course.schedules.new(schedule_params)
-        if @schedule.save
+        if @course.add_schedule(@schedule)
             flash[:success] = 'Added a schedule to your courses'
             redirect_to course_path(@course)
         else
             render 'new'
         end
+    end
+
+    def delete
+        @course ||= Course.find_by(id: params[:id])
+        @schedule = Schedule.find_by(id: params[:sch_id])
+        @course.remove_schedule(@schedule)
+        flash[:success] = 'Schedule deleted successfully'
+        redirect_to course_path(@course)
     end
 
     private 
