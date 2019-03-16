@@ -39,7 +39,7 @@ class Learner < User
                 current1 = schedules1[index1]
                 current2 = schedules2[index2]
         
-                if ((current1.end_time >= current2.start_time) && (current1.end_time <= current2.end_time)) || ((current2.end_time >= current1.start_time) && (current2.end_time <= current1.end_time))
+                if ((current1.end_time > current2.start_time) && (current1.end_time < current2.end_time)) || ((current2.end_time > current1.start_time) && (current2.end_time < current1.end_time))
                     return false
                 end
         
